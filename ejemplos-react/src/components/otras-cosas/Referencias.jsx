@@ -8,6 +8,7 @@ export default class Referencias extends Component {
             sugusVal: ''
         }
         this.refSugus = React.createRef();
+        this.refAudio = React.createRef();
         this.addSugus = this.addSugus.bind(this)
         this.changeSugusVal = this.changeSugusVal.bind(this);
     }
@@ -20,6 +21,7 @@ export default class Referencias extends Component {
             sugus: nuevosSugus
         });
         this.refSugus.current.value = ''
+        this.refAudio.current.play();
 
         // Sin REFERENCIA (actualizando el valor del input en el state)
         // const nuevosSugus = [...this.state.sugus, this.state.sugusVal];
@@ -36,6 +38,7 @@ export default class Referencias extends Component {
         })
         return (
             <div>
+                <audio ref={this.refAudio} src="./sonido-piolin.m4a"></audio>
                 <input type="text" ref={this.refSugus} onChange={this.changeSugusVal} />
                 <button type="button" onClick={this.addSugus}>Añadir</button>
                 <ul>

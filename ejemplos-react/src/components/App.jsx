@@ -5,6 +5,7 @@ import Formulario from './formularios/Formulario';
 import Referencias from './otras-cosas/Referencias';
 import CV from './cv/Cv';
 import CicloDeVida from './ciclo-de-vida/CicloDeVida';
+import Context from './otras-cosas/Context';
 
 class App extends React.Component {
     render() {
@@ -15,7 +16,8 @@ class App extends React.Component {
                 {/* <Formulario /> */}
                 {/* <Referencias /> */}
                 {/* <CV /> */}
-                <CicloDeVida />
+                {/* <CicloDeVida /> */}
+                <Context />
             </div>
         )
     }

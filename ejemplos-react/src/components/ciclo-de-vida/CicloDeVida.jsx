@@ -5,10 +5,12 @@ export default class CicloDeVida extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cuenta: 1
+            cuenta: 1,
+            mostrarCaja: true
         }
         this.incrementar = this.incrementar.bind(this)
         this.decrementar = this.decrementar.bind(this)
+        this.changeMostrar = this.changeMostrar.bind(this)
     }
 
     incrementar() {
@@ -18,6 +20,12 @@ export default class CicloDeVida extends Component {
     decrementar() {
         this.setState({cuenta: this.state.cuenta - 1})
     }
+
+    changeMostrar() {
+        this.setState({
+            mostrarCaja: !this.state.mostrarCaja
+        })
+    }
     
     render() {
         return (
@@ -25,7 +33,11 @@ export default class CicloDeVida extends Component {
                 <button type="button" onClick={this.decrementar}>-</button>
                 <span>Cuenta: {this.state.cuenta}</span>
                 <button type="button" onClick={this.incrementar}>+</button>
-                <Caja cuenta={this.state.cuenta} />
+
+                <button type="button" onClick={this.changeMostrar}>Destruir Caja</button>
+                { this.state.mostrarCaja ? 
+                    <Caja cuenta={this.state.cuenta} /> : 
+                    null }
             </div>
         )
     }
