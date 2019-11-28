@@ -4,6 +4,7 @@ import DarthVader from './props-y-estado/DarthVader';
 import Formulario from './formularios/Formulario';
 import Referencias from './otras-cosas/Referencias';
 import CV from './cv/Cv';
+import CicloDeVida from './ciclo-de-vida/CicloDeVida';
 
 class App extends React.Component {
     render() {
@@ -13,7 +14,8 @@ class App extends React.Component {
                 {/* <DarthVader /> */}
                 {/* <Formulario /> */}
                 {/* <Referencias /> */}
-                <CV />
+                {/* <CV /> */}
+                <CicloDeVida />
             </div>
         )
     }

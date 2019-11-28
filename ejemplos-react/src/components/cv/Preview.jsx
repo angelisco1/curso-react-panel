@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 export default class Preview extends Component {
     render() {
-        const listaSkills = this.props.skills.map(skill => {
-            return <li>{skill}</li>
+        const listaSkills = this.props.skills.map((skill) => {
+            return <li key={skill.id}>{skill.skill}</li>
         })
         return (
             <div>

@@ -9,7 +9,11 @@ export default class Cv extends Component {
             nombre: 'a',
             apellidos: 'b',
             email: 'c',
-            skills: ['a', 'b']
+            skills: [
+                {id: 0, skill: 'a'}, 
+                {id: 1, skill: 'b'}
+            ],
+            nextId: 2
         }
         this.changeState = this.changeState.bind(this);
         this.addSkill = this.addSkill.bind(this);
@@ -23,7 +27,11 @@ export default class Cv extends Component {
 
     addSkill(nuevaSkill) {
         this.setState({
-            skills: [...this.state.skills, nuevaSkill]
+            skills: [...this.state.skills, {
+                id: this.state.nextId,
+                skill: nuevaSkill
+            }],
+            nextId: this.state.nextId + 1
         })
     }
     
