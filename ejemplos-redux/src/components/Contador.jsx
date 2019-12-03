@@ -19,7 +19,7 @@ class Contador extends Component {
 const mapStateToProps = (state) => {
     console.log(state);
     return {
-        cuenta: state
+        cuenta: state.contador
     }
 }
 
