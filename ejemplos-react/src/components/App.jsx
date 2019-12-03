@@ -6,6 +6,7 @@ import Referencias from './otras-cosas/Referencias';
 import CV from './cv/Cv';
 import CicloDeVida from './ciclo-de-vida/CicloDeVida';
 import Context from './otras-cosas/Context';
+import Hocs from './hocs/Hocs';
 
 class App extends React.Component {
     render() {
@@ -17,7 +18,8 @@ class App extends React.Component {
                 {/* <Referencias /> */}
                 {/* <CV /> */}
                 {/* <CicloDeVida /> */}
-                <Context />
+                {/* <Context /> */}
+                <Hocs />
             </div>
         )
     }
