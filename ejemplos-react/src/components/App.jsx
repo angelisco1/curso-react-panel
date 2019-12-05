@@ -13,13 +13,13 @@ class App extends React.Component {
         return (
             <div>
                 {/* <Intro /> */}
-                {/* <DarthVader /> */}
+                <DarthVader />
                 {/* <Formulario /> */}
                 {/* <Referencias /> */}
                 {/* <CV /> */}
                 {/* <CicloDeVida /> */}
                 {/* <Context /> */}
-                <Hocs />
+                {/* <Hocs /> */}
             </div>
         )
     }

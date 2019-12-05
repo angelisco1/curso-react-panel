@@ -1,13 +1,23 @@
 var path = require('path');
+var MiniCSS = require('mini-css-extract-plugin');
 var entryPath = path.join(__dirname, 'src');
 var outputPath = path.join(__dirname, 'dist');
 
 module.exports = {
-    entry: path.join(entryPath, 'app.js'),
+    // entry: path.join(entryPath, 'app.js'),
+    entry: {
+        bundle: path.join(entryPath, 'app.js'), 
+        otros: path.join(entryPath, 'otros.js')
+    },
     output: {
         path: outputPath,
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
+    plugins: [
+        new MiniCSS({
+            filename: '[name].css'
+        })
+    ],
     module: {
         rules: [
             {
@@ -18,7 +28,13 @@ module.exports = {
             {
                 test: /\.(css|scss|sass)$/,
                 exclude: /node_modules/,
-                loaders: ['style-loader', 'css-loader', 'sass-loader']
+                // loaders: ['style-loader', 'css-loader', 'sass-loader']
+                use: [{
+                    loader: MiniCSS.loader,
+                    options: {
+                        publicPath: './dist'
+                    }
+                }, 'css-loader', 'sass-loader']
             }
         ]
     },

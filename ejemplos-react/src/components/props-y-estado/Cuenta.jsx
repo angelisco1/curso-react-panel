@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
+import Estilos from '../../styles/radium-styles';
+import Radium from 'radium';
 
-export default class Cuenta extends Component {
+class Cuenta extends Component {
 
     render() {
         return (
             <div>
                 {this.props.mostrarBotones ? <button type="button" onClick={this.props.decrementar}>-</button> : null}
                 <span>cuenta: {this.props.cuenta}</span>
-                <button type="button" onClick={this.props.incrementar} hidden={!this.props.mostrarBotones}>+</button>
+                <button type="button" ref="btn1" onClick={this.props.incrementar} hidden={!this.props.mostrarBotones} style={Estilos.btnHover}>+</button>
 
                 <button type="button" onClick={() => {this.props.incrementarVal(2)}} hidden={!this.props.mostrarBotones}>+</button>
             </div>
@@ -28,3 +30,5 @@ Cuenta.propTypes = {
     decrementar: PropTypes.func,
     incrementarVal: PropTypes.func,
 }
+
+export default Radium(Cuenta);
