@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { addSkill, changeDato } from '../../store/cv/actions';
 
-export default class Form extends Component {
+class Form extends Component {
     constructor(props) {
         super(props)
         this.state = {
             skill: ''
         }
         this.changeSkill = this.changeSkill.bind(this);
-        this.sendSkill = this.sendSkill.bind(this);
+        this.changeDatos = this.changeDatos.bind(this);
     }
 
     changeSkill(event) {
@@ -16,11 +18,8 @@ export default class Form extends Component {
         })
     }
 
-    sendSkill() {
-        this.props.addSkill(this.state.skill)
-        this.setState({
-            skill: ''
-        })
+    changeDatos(event) {
+        this.props.changeDato(event.target.name, event.target.value);
     }
     
     render() {
@@ -28,22 +27,31 @@ export default class Form extends Component {
             <div>
                 <div>
                     <label htmlFor="nombre">Nombre:</label>
-                    <input type="text" name="nombre" value={this.props.nombre} onChange={this.props.changeState} />
+                    <input type="text" name="nombre" value={this.props.nombre} onChange={this.changeDatos} />
                 </div>
                 <div>
                     <label htmlFor="apellidos">Apellidos:</label>
-                    <input type="text" name="apellidos" value={this.props.apellidos} onChange={this.props.changeState} />
+                    <input type="text" name="apellidos" value={this.props.apellidos} onChange={this.changeDatos} />
                 </div>
                 <div>
                     <label htmlFor="email">Email:</label>
-                    <input type="text" name="email" value={this.props.email} onChange={this.props.changeState} />
+                    <input type="text" name="email" value={this.props.email} onChange={this.changeDatos} />
                 </div>
                 <div>
                     <label htmlFor="skill">Skill:</label>
                     <input type="text" name="skill" value={this.state.skill} onChange={this.changeSkill} />
-                    <button type="button" onClick={this.sendSkill}>Add Skill</button>
+                    <button type="button" onClick={() => this.props.sendSkill(this.state.skill)}>Add Skill</button>
                 </div>
             </div>
         )
     }
 }
+
+const mapDispatchToProps = {
+    sendSkill: addSkill,
+    changeDato
+}
+
+const withProps = connect(null, mapDispatchToProps);
+
+export default withProps(Form);

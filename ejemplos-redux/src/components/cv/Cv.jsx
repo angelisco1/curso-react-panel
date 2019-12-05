@@ -1,42 +1,11 @@
 import React, { Component } from 'react'
 import Form from './Form';
 import Preview from './Preview';
+import { connect } from 'react-redux';
 
-export default class Cv extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            nombre: 'a',
-            apellidos: 'b',
-            email: 'c',
-            skills: [
-                {id: 0, skill: 'a'}, 
-                {id: 1, skill: 'b'}
-            ],
-            nextId: 2
-        }
-        this.changeState = this.changeState.bind(this);
-        this.addSkill = this.addSkill.bind(this);
-    }
-
-    changeState(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
-
-    addSkill(nuevaSkill) {
-        this.setState({
-            skills: [...this.state.skills, {
-                id: this.state.nextId,
-                skill: nuevaSkill
-            }],
-            nextId: this.state.nextId + 1
-        })
-    }
-    
+class Cv extends Component {
     render() {
-        const { nombre, apellidos, email, skills } = this.state;
+        const { nombre, apellidos, email, skills } = this.props;
         
         return (
             <div>
@@ -44,9 +13,7 @@ export default class Cv extends Component {
                     nombre={nombre} 
                     apellidos={apellidos}
                     email={email}
-                    skills={skills}
-                    changeState={this.changeState}
-                    addSkill={this.addSkill} />
+                    skills={skills} />
                 <Preview 
                     nombreCompleto={nombre + ' ' + apellidos}
                     email={email}
@@ -55,3 +22,17 @@ export default class Cv extends Component {
         )
     }
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+        nombre: state.cv.nombre,
+        apellidos: state.cv.apellidos,
+        email: state.cv.email,
+        skills: state.cv.skills,
+    }
+}
+
+const withProps = connect(mapStateToProps, {});
+
+export default withProps(Cv);
